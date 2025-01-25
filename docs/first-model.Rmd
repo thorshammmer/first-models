@@ -1,0 +1,28 @@
+---
+title: "first-model"
+author: "Thor Heimdal"
+date: "`r Sys.Date()`"
+output: 
+  html_document:
+    code_folding: hide
+---
+
+## Scatterplot with Linear Model
+
+This plot demonstrates a scatterplot of `Sepal.Length` vs. `Petal.Length` from the `iris_cut` dataset, with a fitted linear model overlayed in red.
+
+```{r scatterplot, echo=TRUE}
+library(ggplot2)
+
+iris_cut <- iris[,1:4]
+# Plotting the data
+print(
+  ggplot(iris_cut, aes(x = Sepal.Length, y = Petal.Length)) +
+    geom_point(color = "blue", alpha = 0.6) +  # Scatterplot
+    geom_smooth(method = "lm", color = "red", se = FALSE) +  # Linear model
+    labs(
+      title = "Scatterplot with Linear Model",
+      x = "Sepal Length",
+      y = "Petal Length"
+    )
+)
